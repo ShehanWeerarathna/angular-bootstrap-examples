@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-bootstrap-examples';
+  navBarCollapsed: "collapse"|"" = "collapse";
+
+  toggleNavBar(){
+    this.navBarCollapsed = this.navBarCollapsed == "collapse" ? "" : "collapse";
+  }
 }

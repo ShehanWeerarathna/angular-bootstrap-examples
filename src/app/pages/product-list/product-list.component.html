@@ -1,0 +1,24 @@
+<div class="row">
+    <h1>Products list</h1>
+</div>
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of productListData.products">
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>
+                    <a class="btn btn-primary" routerLink="/products/{{product.id}}">View</a>
+                    <!-- <button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button> -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
