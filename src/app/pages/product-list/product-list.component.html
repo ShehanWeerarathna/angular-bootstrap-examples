@@ -1,24 +1,39 @@
 <div class="row">
     <h1>Products list</h1>
 </div>
-<div class="row">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let product of productListData.products">
-                <td>{{product.name}}</td>
-                <td>{{product.price}}</td>
-                <td>
-                    <a class="btn btn-primary" routerLink="/products/{{product.id}}">View</a>
-                    <!-- <button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button> -->
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="input-group">
+            <input [(ngModel)]="searchTerm" type="text" class="form-control" placeholder="Search..."
+                (keyup.enter)="onSearch()">
+            <div class="input-group-append">
+                <button class="btn btn-primary" (click)="onSearch()">Search</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-9">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of productListData.products">
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.category?.name}}</td>
+                    <td class="text-end">
+                        <a class="btn btn-primary" routerLink="/products/{{product.id}}">View</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

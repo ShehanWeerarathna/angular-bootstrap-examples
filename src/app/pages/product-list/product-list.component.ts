@@ -9,12 +9,18 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductListComponent implements OnInit {
   productListData:ProductListResopnseType = {} as ProductListResopnseType;
-
+ searchTerm:string = "";
   constructor(private productService: ProductService) { }
   ngOnInit(): void {
-    this.productService.getProductsAsync().subscribe((data) => {
+    this.productService.getProductsAsync(null).subscribe((data) => {
       this.productListData = data;
-      // Now you can work with this.productListData in your template
+    }
+    );
+  }
+  onSearch(){
+    this.productService.getProductsAsync(this.searchTerm).subscribe((data) => {
+console.log(this.searchTerm)
+      this.productListData = data;
     }
     );
   }

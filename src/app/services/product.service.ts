@@ -15,10 +15,17 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
   // Example GET request
-  getProductsAsync(): Observable<ProductListResopnseType> {
-    return this.http.get<ProductListResopnseType>(
-      `${this.apiUrl}/Product/GetProducts`
-    );
+  getProductsAsync(searchTerm:string | null): Observable<ProductListResopnseType> {
+    if(searchTerm){
+      return this.http.get<ProductListResopnseType>(
+        `${this.apiUrl}/Product/GetProducts?searchTerm=${searchTerm}`
+      );
+    }else{
+      return this.http.get<ProductListResopnseType>(
+        `${this.apiUrl}/Product/GetProducts`
+      );
+    }
+    
   }
 
   // Example POST request

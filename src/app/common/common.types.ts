@@ -1,4 +1,3 @@
-import { EnumProductPageMode } from "./common.enums";
 
 export interface ProductDto {
   id: number;
@@ -24,9 +23,5 @@ export interface ProductListResopnseType {
 }
 export interface ProductPageResponseType {
   categories: SelectDto[];
-  product?: ProductDto | undefined | null;
-}
-
-export interface ProductPageState extends ProductPageResponseType {
-  mode: EnumProductPageMode;
+  product?: ProductDto | null;
 }
