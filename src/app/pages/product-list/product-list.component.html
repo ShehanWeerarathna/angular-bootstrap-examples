@@ -4,10 +4,15 @@
 <div class="row justify-content-center">
     <div class="col-md-6">
         <div class="input-group">
-            <input [(ngModel)]="searchTerm" type="text" class="form-control" placeholder="Search..."
+            <!-- <input [(ngModel)]="searchTerm" type="text" class="form-control" placeholder="Search..."
                 (keyup.enter)="onSearch()">
             <div class="input-group-append">
                 <button class="btn btn-primary" (click)="onSearch()">Search</button>
+            </div> -->
+            <input  type="text" class="form-control" placeholder="Search..."
+                (keyup.enter)="onProductSearch(searchTerm.value)" #searchTerm >
+            <div class="input-group-append">
+                <button class="btn btn-primary" (click)="onProductSearch(searchTerm.value)">Search</button>
             </div>
         </div>
     </div>

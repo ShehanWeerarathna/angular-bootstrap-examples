@@ -8,8 +8,8 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  productListData:ProductListResopnseType = {} as ProductListResopnseType;
- searchTerm:string = "";
+  productListData: ProductListResopnseType = {} as ProductListResopnseType;
+  searchTerm: string = "";
   constructor(private productService: ProductService) { }
   ngOnInit(): void {
     this.productService.getProductsAsync(null).subscribe((data) => {
@@ -17,12 +17,18 @@ export class ProductListComponent implements OnInit {
     }
     );
   }
-  onSearch(){
+  onSearch() {
     this.productService.getProductsAsync(this.searchTerm).subscribe((data) => {
-console.log(this.searchTerm)
       this.productListData = data;
     }
     );
   }
+  onProductSearch(searchTerm:string) {
+    this.productService.getProductsAsync(searchTerm).subscribe((data) => {
+      this.productListData = data;
+    }
+    );
+  }
+
 
 }
