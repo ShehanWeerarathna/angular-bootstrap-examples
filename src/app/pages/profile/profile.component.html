@@ -1,0 +1,50 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div  class="form-group my-2" >
+    <label for="first-name">First name</label>
+    <input type="text" class="form-control" id="first-name" placeholder="First name" formControlName="firstName">
+  </div>
+  <div class="form-group my-2">
+    <label for="last-name">Last Name</label>
+    <input id="last-name" type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
+  </div>
+  <div class="form-group my-2">
+    <label>Gender</label>
+    <div>
+      <label>
+        <input type="radio" formControlName="gender" value="male"> Male
+      </label>
+      <label>
+        <input type="radio" formControlName="gender" value="female"> Female
+      </label>
+    </div>
+  </div>
+  <div class="form-group my-2">
+    <label>Languages</label>
+    <div>
+      <label>
+        <input type="checkbox" formControlName="english" > English
+      </label>
+      <label>
+        <input type="checkbox" formControlName="spanish" > Spanish
+      </label>
+      <label>
+        <input type="checkbox" formControlName="french" > French
+      </label>
+    </div>
+  </div>
+  <div class="form-group my-2">
+    <label for="country">Country</label>
+    <select class="form-control" id="country" formControlName="country">
+      <option value="usa">USA</option>
+      <option value="canada">Canada</option>
+      <option value="uk">UK</option>
+    </select>
+  </div>
+  <div class="form-group my-2">
+    <label for="profilePic">Country</label>
+    <input type="file" class="form-control" id="profilePic" formControlName="profilePic" (change)="onImageUpload($event)">
+    // image preview here
+
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

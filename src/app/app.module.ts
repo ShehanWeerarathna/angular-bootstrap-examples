@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { ProductComponent } from './pages/product/product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { ImagesUploadComponent } from './pages/images-upload/images-upload.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    ProductComponent
+    ProductComponent,
+    ProfileComponent,
+    ImagesUploadComponent
   ],
   imports: [
     BrowserModule,

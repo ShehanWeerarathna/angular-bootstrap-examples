@@ -57,4 +57,11 @@ export class ProductService {
       `${this.apiUrl}/Product/GetProductById/${id}`
     );
   }
+
+  uploadImagesAsync(formData: FormData): Observable<any> {
+    return this.http.post<any>(
+      `${this.apiUrl}/Product/UploadImages`,
+      formData
+    );
+  }
 }
