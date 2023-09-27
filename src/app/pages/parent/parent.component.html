@@ -1,0 +1,14 @@
+<h1> tow way binding parent child</h1>
+<h2>Parent Component</h2>
+<input [(ngModel)]="sharedText" placeholder="Parent Text" />
+<app-child [childText]="sharedText" (childTextChange)="updateSharedText($event)"></app-child>
+
+<app-child [(childText)]="sharedText"></app-child>
+<br/><br/>
+
+<h1>ngOnChanges part</h1>
+<input [(ngModel)]="title" placeholder="Parent title Text" type="text"/>
+<input [(ngModel)]="content" placeholder="Parent content Text" type="text"/>
+
+
+<app-on-change-child [content]="content" [title]="title"></app-on-change-child>

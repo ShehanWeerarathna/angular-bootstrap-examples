@@ -8,23 +8,29 @@ import { ProductComponent } from './pages/product/product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ImagesUploadComponent } from './pages/images-upload/images-upload.component';
+import { ParentComponent } from './pages/parent/parent.component';
+import { ChildComponent } from "./components/child/child.component";
+import { OnChangeChildComponent } from './components/on-change-child/on-change-child.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProductListComponent,
-    ProductComponent,
-    ProfileComponent,
-    ImagesUploadComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ProductListComponent,
+        ProductComponent,
+        ProfileComponent,
+        ImagesUploadComponent,
+        ParentComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
+        ChildComponent,
+        OnChangeChildComponent
+    ]
 })
 export class AppModule { }

@@ -1,0 +1,11 @@
+<!-- two way binding section -->
+<h2>Child Component</h2>
+<input [(ngModel)]="childText" 
+(ngModelChange)="onTextChange($event)" 
+placeholder="Child Text" />
+
+<input placeholder="childText2" [(ngModel)]="childText" 
+(ngModelChange)="onTextChange2()" 
+placeholder="Child Text 2" />
+
+<!-- ononchange section -->
