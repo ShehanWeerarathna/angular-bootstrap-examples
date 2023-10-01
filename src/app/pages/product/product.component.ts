@@ -67,7 +67,7 @@ export class ProductComponent implements OnInit {
               price: null,
               categoryId: null,
             });
-            // this.productForm.enable();
+             this.productForm.enable();
             // this.productForm.markAsUntouched();
             this.isEditable = true;
           }
