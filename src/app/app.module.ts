@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,11 @@ import { ImagesUploadComponent } from './pages/images-upload/images-upload.compo
 import { ParentComponent } from './pages/parent/parent.component';
 import { ChildComponent } from "./components/child/child.component";
 import { OnChangeChildComponent } from './components/on-change-child/on-change-child.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductEffects } from './pages/product-list/product-list.effects';
+import { reducers } from './store';
 
 @NgModule({
     declarations: [
@@ -30,7 +35,10 @@ import { OnChangeChildComponent } from './components/on-change-child/on-change-c
         ReactiveFormsModule,
         FormsModule,
         ChildComponent,
-        OnChangeChildComponent
+        OnChangeChildComponent,
+        StoreModule.forRoot(reducers, {}),
+        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+        EffectsModule.forRoot([ProductEffects])
     ]
 })
 export class AppModule { }

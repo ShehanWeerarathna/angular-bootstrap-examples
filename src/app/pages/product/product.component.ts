@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductDto, ProductPageResponseType } from 'src/app/common/common.types';
+import { ProductDto, ProductListResopnseType, ProductPageResponseType } from 'src/app/common/common.types';
 import { ProductService } from 'src/app/services/product.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductFormType } from './product.component.types';
+import { Store } from '@ngrx/store';
+import { selectProductDataById } from '../product-list/product-list.selectors';
 
 @Component({
   selector: 'app-product',
@@ -32,7 +34,8 @@ export class ProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    private store: Store<{ productListReducer: ProductListResopnseType }>
   ) { }
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -41,23 +44,36 @@ export class ProductComponent implements OnInit {
 
       if (!this.isNewProduct) {
         // Fetch product data using the ProductService
-        this.productService
-          .getProductByIdAsync(
-            this.productIdParam !== null ? parseInt(this.productIdParam) : 0
-          )
-          .subscribe((data) => {
-            this.productData = data;
-            if (this.productData.product !== null) {
-              this.productForm.setValue({
-                name: this.productData.product?.name ?? '',
-                price: this.productData.product?.price ?? 0,
-                categoryId: this.productData.product?.categoryId ?? 0,
-              });
-              this.productForm.disable();
-              this.isEditable = false;
 
-            }
-          });
+        this.store.select(selectProductDataById(this.productIdParam !== null ? parseInt(this.productIdParam) : 0)).subscribe((data) => {
+          this.productData = data;
+          if (this.productData.product !== null) {
+            this.productForm.setValue({
+              name: this.productData.product?.name ?? '',
+              price: this.productData.product?.price ?? 0,
+              categoryId: this.productData.product?.categoryId ?? 0,
+            });
+            this.productForm.disable();
+            this.isEditable = false;
+
+          }
+        });
+        // this.productService
+        //   .getProductByIdAsync(
+        //     this.productIdParam !== null ? parseInt(this.productIdParam) : 0
+        //   )
+        //   .subscribe((data) => {
+        //     this.productData = data;
+        //     if (this.productData.product !== null) {
+        //       this.productForm.setValue({
+        //         name: this.productData.product?.name ?? '',
+        //         price: this.productData.product?.price ?? 0,
+        //         categoryId: this.productData.product?.categoryId ?? 0,
+        //       });
+        //       this.productForm.disable();
+        //       this.isEditable = false;
+        //     }
+        //   });
       } else {
         this.productService.getProductByIdAsync(0).subscribe((data) => {
           this.productData = data;
