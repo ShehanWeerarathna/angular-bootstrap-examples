@@ -6,6 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductFormType } from './product.component.types';
 import { Store } from '@ngrx/store';
 import { selectProductDataById } from '../product-list/product-list.selectors';
+import { productListActions } from '../product-list/product-list.actions';
 
 @Component({
   selector: 'app-product',
@@ -48,14 +49,23 @@ export class ProductComponent implements OnInit {
         this.store.select(selectProductDataById(this.productIdParam !== null ? parseInt(this.productIdParam) : 0)).subscribe((data) => {
           this.productData = data;
           if (this.productData.product !== null) {
-            this.productForm.setValue({
-              name: this.productData.product?.name ?? '',
-              price: this.productData.product?.price ?? 0,
-              categoryId: this.productData.product?.categoryId ?? 0,
-            });
+            if (this.productData.product?.id === undefined || this.productData.product?.id === 0) {
+              this.store.dispatch(productListActions.loadProductById( this.productIdParam !== null ? parseInt(this.productIdParam) : 0 ));            
+            }else{
+              this.productForm.setValue({
+                name: this.productData.product?.name ?? '',
+                price: this.productData.product?.price ?? 0,
+                categoryId: this.productData.product?.categoryId ?? 0,
+              });
+            }
+          
             this.productForm.disable();
             this.isEditable = false;
+          
 
+          }else{
+  
+          
           }
         });
         // this.productService

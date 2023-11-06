@@ -23,5 +23,5 @@ export interface ProductListResopnseType {
 }
 export interface ProductPageResponseType {
   categories: SelectDto[];
-  product?: ProductDto | null;
+  product?: ProductDto;
 }

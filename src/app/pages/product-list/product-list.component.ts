@@ -32,6 +32,8 @@ export class ProductListComponent implements OnInit,OnDestroy {
         this.productListData = data;
       });
 
+      const dispatch = this.store.dispatch;
+
   }
 
   ngOnDestroy(): void {

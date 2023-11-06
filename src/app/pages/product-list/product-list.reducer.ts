@@ -12,10 +12,30 @@ const initialState: ProductListResopnseType = {
 } as ProductListResopnseType;
 export const productListReducer = createReducer(
   initialState,
+  // load product list
   on(productListActions.loadProductListSuccess, (state, action) => {
     return {
       ...state,
       ...action.data,
     };
+  }),
+
+  // load a product by id
+  on(productListActions.loadProductByIdSuccess, (state, action) => {
+    const newProduct = action.data.product;
+    if (newProduct) {
+      const newProducts = state.products.map((product) => {
+        if (product.id === newProduct.id) {
+          return newProduct;
+        }
+        return product;
+      });
+      return {
+        ...state,
+        products: newProducts,
+      };
+    }
+    return state; // fix for Problem 2
   })
+
 );

@@ -27,4 +27,20 @@ export class ProductEffects {
       )
     )
   );
+
+  loadProductById$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(productListActions.loadProductById),
+      switchMap((action) =>
+        this.productService.getProductByIdAsync(action.id).pipe(
+          map((data) =>
+            productListActions.loadProductByIdSuccess(data )
+          ),
+          catchError((error) =>
+            of(productListActions.loadProductByIdFailure({ error }))
+          )
+        )
+      )
+    )
+  );
 }
