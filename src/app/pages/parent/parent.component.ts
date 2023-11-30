@@ -30,5 +30,25 @@ export class ParentComponent {
     content: string = 'Initial Content';
     title: string = 'Initial Title';
   
+    onChangeSearch(text:string){
+      console.log(text);
 
+    }
+
+    searchResults: string[] = [];
+
+    onSearch(searchTerm: string) {
+      console.log('Search term:', searchTerm );
+      // Perform search logic (e.g., call a service to get search results)
+      // For the sake of the example, let's assume searchResults is an array of strings.
+      this.searchResults = this.getSearchResults(searchTerm);
+      console.log(this.searchResults);
+
+    }
+  
+    getSearchResults(searchTerm: string): string[] {
+      // Implement your search logic here (e.g., call a service)
+      // For the sake of the example, just return dummy results.
+      return ['Result 1', 'Result 2', 'Result 3'];
+    }
 }

@@ -1,0 +1,14 @@
+<p>search-box works!</p>
+<!-- <input
+  [placeholder]="placeholder"
+  type="text"
+  [(ngModel)]="searchTerm"
+    (ngModelChange)="searchEvent.emit(searchTerm)"
+/> -->
+
+<input
+  [placeholder]="placeholder"
+  type="text"
+  (ngModelChange)="searchEvent.emit(searchTerm)"
+/>
+<button (click)="search()">Search</button>

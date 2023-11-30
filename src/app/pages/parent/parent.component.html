@@ -11,4 +11,17 @@
 <input [(ngModel)]="content" placeholder="Parent content Text" type="text"/>
 
 
-<app-on-change-child [content]="content" [title]="title"></app-on-change-child>
+<app-on-change-child [content]="content" [title]="title" ></app-on-change-child>
+
+<hr>
+
+<h1>Parent Component</h1>
+<app-search-box placeholder="search" (searchEvent)="onSearch($event)"></app-search-box>
+
+<!-- Display search results or perform other actions based on the search term -->
+<div *ngIf="searchResults.length > 0">
+  <h2>Search Results:</h2>
+  <ul>
+    <li *ngFor="let result of searchResults">{{ result }}</li>
+  </ul>
+</div>

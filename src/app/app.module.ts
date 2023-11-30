@@ -11,6 +11,8 @@ import { ImagesUploadComponent } from './pages/images-upload/images-upload.compo
 import { ParentComponent } from './pages/parent/parent.component';
 import { ChildComponent } from "./components/child/child.component";
 import { OnChangeChildComponent } from './components/on-change-child/on-change-child.component';
+import { SearchBoxComponent } from './components/search-box/search-box.component';
+import { ConfirmationBoxComponent } from './components/confirmation-box/confirmation-box.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +21,9 @@ import { OnChangeChildComponent } from './components/on-change-child/on-change-c
         ProductComponent,
         ProfileComponent,
         ImagesUploadComponent,
-        ParentComponent
+        ParentComponent,
+        SearchBoxComponent,
+        ConfirmationBoxComponent
     ],
     providers: [],
     bootstrap: [AppComponent],

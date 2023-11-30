@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 export class OnChangeChildComponent implements OnChanges {
   @Input() title: string = '';
   @Input() content: string = '';
+  @Output() searchString = new EventEmitter<string>();
 
   ngOnChanges(changes: SimpleChanges) {
   
